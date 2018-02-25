@@ -82,25 +82,29 @@ static char termname[] = "st-256color";
  */
 static unsigned int tabspaces = 8;
 
+/* bg opacity */
+static const int alpha = 0xbb;
+
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-	/* solarized dark */
-	"#073642",  /*  0: black    */
-	"#dc322f",  /*  1: red      */
-	"#859900",  /*  2: green    */
-	"#b58900",  /*  3: yellow   */
-	"#268bd2",  /*  4: blue     */
-	"#d33682",  /*  5: magenta  */
-	"#2aa198",  /*  6: cyan     */
-	"#eee8d5",  /*  7: white    */
-	"#002b36",  /*  8: brblack  */
-	"#cb4b16",  /*  9: brred    */
-	"#586e75",  /* 10: brgreen  */
-	"#657b83",  /* 11: bryellow */
-	"#839496",  /* 12: brblue   */
-	"#6c71c4",  /* 13: brmagenta*/
-	"#93a1a1",  /* 14: brcyan   */
-	"#fdf6e3",  /* 15: brwhite  */
+	/* NOT solarized dark, custom */
+	"gray15",    /*  0: black    */
+	"red3",      /*  1: red      */
+	"green3",    /*  2: green    */
+	"yellow3",   /*  3: yellow   */
+	"blue2",     /*  4: blue     */
+	"magenta2",  /*  5: magenta  */
+	"cyan3",     /*  6: cyan     */
+	"gray90",    /*  7: white    */
+	"gray50",    /*  8: brblack  */
+	"red",       /*  9: brred    */
+	"green",     /* 10: brgreen  */
+	"yellow",    /* 11: bryellow */
+	"blue",      /* 12: brblue   */
+	"magenta",   /* 13: brmagenta*/
+	"cyan",      /* 14: brcyan   */
+	"white",     /* 15: brwhite  */
+	"black",
 };
 
 /* Terminal colors for alternate (light) palette */
@@ -122,16 +126,17 @@ static const char *altcolorname[] = {
 	"#6c71c4",  /* 13: brmagenta*/
 	"#586e75",  /* 14: brcyan   */
 	"#002b36",  /* 15: brwhite  */
+	"black",
 };
 
 /*
  * Default colors (colorname index)
  * foreground, background, cursor, reverse cursor
  */
-static unsigned int defaultfg = 12;
-static unsigned int defaultbg = 8;
-static unsigned int defaultcs = 14;
-static unsigned int defaultrcs = 15;
+static unsigned int defaultfg = 7;
+static unsigned int defaultbg = 16;
+static unsigned int defaultcs = 10;
+static unsigned int defaultrcs = 11;
 
 /*
  * Default shape of cursor
@@ -174,8 +179,8 @@ static MouseShortcut mshortcuts[] = {
 
 static MouseKey mkeys[] = {
 	/* button               mask            function        argument */
-	{ Button4,              ShiftMask,      kscrollup,      {.i =  1} },
-	{ Button5,              ShiftMask,      kscrolldown,    {.i =  1} },
+	{ Button4,              XK_NO_MOD,      kscrollup,      {.i =  1} },
+	{ Button5,              XK_NO_MOD,      kscrolldown,    {.i =  1} },
 };
 
 /* Internal keyboard shortcuts. */
